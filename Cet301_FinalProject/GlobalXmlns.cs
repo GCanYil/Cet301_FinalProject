@@ -1,0 +1,2 @@
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/dotnet/maui/global", "Cet301_FinalProject")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/dotnet/maui/global", "Cet301_FinalProject.Pages")]
