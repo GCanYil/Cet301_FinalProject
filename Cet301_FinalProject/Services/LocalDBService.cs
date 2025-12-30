@@ -81,4 +81,52 @@ public class LocalDBService
         await Init();
         await _connection.InsertAsync(orderItem);
     }
+
+    public async Task UpdateCustomer(Customer customer)
+    {
+        await Init();
+        await _connection.UpdateAsync(customer);
+    }
+
+    public async Task UpdateProduct(Product product)
+    {
+        await Init();
+        await _connection.UpdateAsync(product);
+    }
+
+    public async Task UpdateOrder(Order order)
+    {
+        await Init();
+        await _connection.UpdateAsync(order);
+    }
+
+    public async Task UpdateOrderItem(OrderItem orderItem)
+    {
+        await Init();
+        await _connection.UpdateAsync(orderItem)
+    }
+
+    public async Task DeleteCustomer(Customer customer)
+    {
+        await Init();
+        await _connection.DeleteAsync(customer);
+    }
+
+    public async Task DeleteProduct(Product product)
+    {
+        await Init();
+        await _connection.DeleteAsync(product);
+    }
+
+    public async Task DeleteOrder(Order order)
+    {
+        await Init();
+        await _connection.DeleteAsync(order);
+    }
+
+    public async Task DeleteOrderItem(OrderItem orderItem)
+    {
+        await Init();
+        await _connection.DeleteAsync(orderItem);
+    }
 }
