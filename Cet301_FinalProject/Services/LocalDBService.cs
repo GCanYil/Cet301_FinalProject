@@ -57,4 +57,28 @@ public class LocalDBService
         await Init();
         return await _connection.Table<OrderItem>().Where(x => x.ProductId == productId).ToListAsync();
     }
+
+    public async Task CreateCustomer(Customer customer)
+    {
+        await Init();
+        await _connection.InsertAsync(customer);
+    }
+
+    public async Task CreateProduct(Product product)
+    {
+        await Init();
+        await _connection.InsertAsync(product);
+    }
+
+    public async Task CreateOrder(Order order)
+    {
+        await Init();
+        await _connection.InsertAsync(order);
+    }
+
+    public async Task CreateOrderItem(OrderItem orderItem)
+    {
+        await Init();
+        await _connection.InsertAsync(orderItem);
+    }
 }
