@@ -103,7 +103,7 @@ public class LocalDBService
     public async Task UpdateOrderItem(OrderItem orderItem)
     {
         await Init();
-        await _connection.UpdateAsync(orderItem)
+        await _connection.UpdateAsync(orderItem);
     }
 
     public async Task DeleteCustomer(Customer customer)
