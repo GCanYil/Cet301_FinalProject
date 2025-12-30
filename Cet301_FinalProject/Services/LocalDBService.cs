@@ -20,6 +20,7 @@ public class LocalDBService
         await _connection.CreateTableAsync<Product>();
         await _connection.CreateTableAsync<Order>();
         await _connection.CreateTableAsync<OrderItem>();
+        await _connection.CreateTableAsync<OperationLog>();
     }
 
     public async Task<List<Customer>> GetCustomers()
@@ -58,6 +59,12 @@ public class LocalDBService
         return await _connection.Table<OrderItem>().Where(x => x.ProductId == productId).ToListAsync();
     }
 
+    public async Task<List<OperationLog>> GetOperationLog()
+    {
+        await Init();
+        return await _connection.Table<OperationLog>().ToListAsync();
+    }
+
     public async Task CreateCustomer(Customer customer)
     {
         await Init();
@@ -82,6 +89,18 @@ public class LocalDBService
         await _connection.InsertAsync(orderItem);
     }
 
+    public async Task CreateLog(string type, string message)
+    {
+        await Init();
+        var newLog = new OperationLog
+        {
+            OperationType = type,
+            Message = message,
+            Date = DateTime.Now
+        };
+        await _connection.InsertAsync(newLog);
+    }
+    
     public async Task UpdateCustomer(Customer customer)
     {
         await Init();
