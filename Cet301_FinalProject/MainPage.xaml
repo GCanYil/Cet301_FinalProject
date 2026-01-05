@@ -14,7 +14,7 @@
             </Label>
             <Label x:Name="LBLUserStatus"
                    Text="User Status: Standard"
-                   TextColor="#FFD700"
+                   TextColor="Gold"
                    FontSize="16"
                    HorizontalOptions="Center">
             </Label>
@@ -28,6 +28,7 @@
                     TextColor="#FFD700"
                     FontSize="18"
                     FontAttributes="Bold"
+                    Clicked="ToCustomers"
                     >
                 </Button>
             <Button Text="Products"
@@ -35,14 +36,16 @@
                     BackgroundColor="#333333"
                     TextColor="MediumPurple"
                     FontAttributes="Bold"
-                    FontSize="18">
+                    FontSize="18"
+                    Clicked="ToProducts">
                 </Button>
             <Button Text="Orders"
                     Padding="20"
                     BackgroundColor="#333333"
                     TextColor="#00FF7F"
                     FontAttributes="Bold"
-                    FontSize="18">
+                    FontSize="18"
+                    Clicked="ToOrders">
                 </Button>
         </VerticalStackLayout>
         
@@ -64,6 +67,7 @@
                             BackgroundColor="#00FF7F"
                             TextColor="Black"
                             FontAttributes="Bold"
+                            Clicked="LoginClicked"
                             Grid.Column="1"></Button>
                 </Grid>
             </VerticalStackLayout>
@@ -76,6 +80,7 @@
                         TextColor="#00BFFF"
                         BorderWidth="1"
                         BorderColor="#00BFFF"
+                        Clicked="ToLogs"
                         Grid.Column="0">
                     </Button>
                 <Button Text="Log Out"
@@ -83,6 +88,7 @@
                         TextColor="#D9534F"
                         BorderWidth="1"
                         BorderColor="#D9534F"
+                        Clicked="LogoutClicked"
                         Grid.Column="1"
                     ></Button>
             </Grid>
