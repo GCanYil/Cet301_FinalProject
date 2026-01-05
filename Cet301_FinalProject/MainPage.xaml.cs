@@ -32,8 +32,24 @@ public partial class MainPage : ContentPage
             AdminPanel.IsVisible = false;
         }
     }
-    
-    private void LoginClicked(object sender, EventArgs e) {}
+
+    private async void LoginClicked(object sender, EventArgs e)
+    {
+        string password = EntryPassword.Text;
+
+        if (password == "1234")
+        {
+            App.IsAdmin = true;
+            EntryPassword.Text = "";
+            RefreshUI();
+            await DisplayAlert("Success", "Admin Mode is on", "OK");
+        }
+        else
+        {
+            await DisplayAlert("Error", "Wrong password!", "OK");
+            EntryPassword.Text = "";
+        }
+    }
     private void LogoutClicked(object sender, EventArgs e) {}
     
     private void ToCustomers(object sender, EventArgs e) {}
