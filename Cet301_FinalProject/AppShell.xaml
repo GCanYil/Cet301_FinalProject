@@ -11,18 +11,22 @@
         <ShellContent
             Title="Main Page"
             ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage"
             ></ShellContent>
         <ShellContent
             Title="Customers"
             ContentTemplate="{DataTemplate views:CustomersPage}"
+            Route="CustomersPage"
             ></ShellContent>
         <ShellContent
             Title="Products"
             ContentTemplate="{DataTemplate views:ProductsPage}"
+            Route="ProductsPage"
             ></ShellContent>
         <ShellContent
             Title="Orders"
             ContentTemplate="{DataTemplate views:OrdersPage}"
+            Route="OrdersPage"
             ></ShellContent>
     </TabBar>
     

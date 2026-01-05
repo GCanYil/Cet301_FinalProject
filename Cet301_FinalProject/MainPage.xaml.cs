@@ -1,4 +1,6 @@
-﻿namespace Cet301_FinalProject;
+﻿using Cet301_FinalProject.Views;
+
+namespace Cet301_FinalProject;
 
 public partial class MainPage : ContentPage
 {
@@ -56,10 +58,25 @@ public partial class MainPage : ContentPage
         App.IsAdmin = false;
         RefreshUI();
     }
-    
-    private void ToCustomers(object sender, EventArgs e) {}
-    private void ToProducts(object sender, EventArgs e) {}
-    private void ToOrders(object sender, EventArgs e) {}
-    private void ToLogs(object sender, EventArgs e) {}
+
+    private async void ToCustomers(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("///CustomersPage");
+    }
+
+    private async void ToProducts(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("///ProductsPage");
+    }
+
+    private async void ToOrders(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("///OrdersPage");
+    }
+
+    private async void ToLogs(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync(nameof(LogsPage));
+    }
     
 }
