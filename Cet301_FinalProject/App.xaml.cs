@@ -2,6 +2,7 @@
 
 public partial class App : Application
 {
+    public static bool IsAdmin = false;
     public App()
     {
         InitializeComponent();
