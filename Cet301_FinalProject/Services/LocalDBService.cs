@@ -69,18 +69,21 @@ public class LocalDBService
     {
         await Init();
         await _connection.InsertAsync(customer);
+        await CreateLog("Customer", $"{customer.Name} added to system");
     }
 
     public async Task CreateProduct(Product product)
     {
         await Init();
         await _connection.InsertAsync(product);
+        await CreateLog("Product", $"{product.Name} added to system");
     }
 
     public async Task CreateOrder(Order order)
     {
         await Init();
         await _connection.InsertAsync(order);
+        await CreateLog("Order", $"{order.TotalPrice} order for {order.CustomerId} been set");
     }
 
     public async Task CreateOrderItem(OrderItem orderItem)
@@ -105,18 +108,21 @@ public class LocalDBService
     {
         await Init();
         await _connection.UpdateAsync(customer);
+        await CreateLog("Customer", $"{customer.Name} details updated");
     }
 
     public async Task UpdateProduct(Product product)
     {
         await Init();
         await _connection.UpdateAsync(product);
+        await CreateLog("Product", $"{product.Name} updated, new stock {product.StockAmount}");
     }
 
     public async Task UpdateOrder(Order order)
     {
         await Init();
         await _connection.UpdateAsync(order);
+        await CreateLog("Order", $"{order.Id} updated");
     }
 
     public async Task UpdateOrderItem(OrderItem orderItem)
@@ -129,18 +135,21 @@ public class LocalDBService
     {
         await Init();
         await _connection.DeleteAsync(customer);
+        await CreateLog("Customer", $"{customer.Name} deleted");
     }
 
     public async Task DeleteProduct(Product product)
     {
         await Init();
         await _connection.DeleteAsync(product);
+        await CreateLog("Product", $"{product.Name} deleted");
     }
 
     public async Task DeleteOrder(Order order)
     {
         await Init();
         await _connection.DeleteAsync(order);
+        await CreateLog("Order", $"{order.Id} deleted");
     }
 
     public async Task DeleteOrderItem(OrderItem orderItem)
