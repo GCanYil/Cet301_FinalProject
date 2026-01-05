@@ -20,7 +20,8 @@
             </Label>
         </VerticalStackLayout>
         
-        <VerticalStackLayout Grid.Row="1" Spacing="20" Padding="30">
+        <VerticalStackLayout Grid.Row="1" Spacing="20" Padding="30" 
+                             VerticalOptions="Center">
             <Button Text="Customers"
                     Padding="20"
                     BackgroundColor="#333333"
@@ -45,8 +46,46 @@
                 </Button>
         </VerticalStackLayout>
         
-        <VerticalStackLayout Grid.Row="2">
-            
+        <VerticalStackLayout Grid.Row="2" Spacing="20" Padding="20">
+            <VerticalStackLayout x:Name="LoginPanel" Spacing="20">
+                <Label Text="Admin? Log In"
+                       TextColor="WhiteSmoke"
+                       FontSize="16">
+                    </Label>
+                <Grid ColumnDefinitions="*, Auto" ColumnSpacing="10">
+                    <Entry x:Name="EntryPassword"
+                           Placeholder="Enter Admin Password"
+                           PlaceholderColor="WhiteSmoke"
+                           TextColor="WhiteSmoke"
+                           BackgroundColor="#2D2D2D"
+                           IsPassword="True"
+                           Grid.Column="0"></Entry>
+                    <Button Text="Log In"
+                            BackgroundColor="#00FF7F"
+                            TextColor="Black"
+                            FontAttributes="Bold"
+                            Grid.Column="1"></Button>
+                </Grid>
+            </VerticalStackLayout>
+            <Grid x:Name="AdminPanel"
+                  ColumnDefinitions="*,*"
+                  ColumnSpacing="10"
+                  IsVisible="False">
+                <Button Text="View Logs"
+                        BackgroundColor="#2D2D2D"
+                        TextColor="#00BFFF"
+                        BorderWidth="1"
+                        BorderColor="#00BFFF"
+                        Grid.Column="0">
+                    </Button>
+                <Button Text="Log Out"
+                        BackgroundColor="#2D2D2D"
+                        TextColor="#D9534F"
+                        BorderWidth="1"
+                        BorderColor="#D9534F"
+                        Grid.Column="1"
+                    ></Button>
+            </Grid>
         </VerticalStackLayout>
     </Grid>
 
