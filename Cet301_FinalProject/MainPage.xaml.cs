@@ -50,7 +50,12 @@ public partial class MainPage : ContentPage
             EntryPassword.Text = "";
         }
     }
-    private void LogoutClicked(object sender, EventArgs e) {}
+
+    private void LogoutClicked(object sender, EventArgs e)
+    {
+        App.IsAdmin = false;
+        RefreshUI();
+    }
     
     private void ToCustomers(object sender, EventArgs e) {}
     private void ToProducts(object sender, EventArgs e) {}
