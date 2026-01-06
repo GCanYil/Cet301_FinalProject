@@ -2,8 +2,76 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Cet301_FinalProject.Views.ProductsPage">
+             x:Class="Cet301_FinalProject.Views.ProductsPage"
+             BackgroundColor="#1F1F1F">
     <ContentPage.Content>
-        
+        <Grid RowDefinitions="Auto,*">
+            <VerticalStackLayout x:Name="AddProductPanel"
+                                 Spacing="20" Padding="20" Grid.Row="0">
+                <Label Text="Add new product"
+                       TextColor="WhiteSmoke"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center">
+                </Label>
+                <VerticalStackLayout BackgroundColor="#252525"
+                                     Spacing="20" Padding="20">
+                    <Entry x:Name="EntryProductName"
+                           Placeholder="Product Name"
+                           TextColor="WhiteSmoke"
+                           PlaceholderColor="WhiteSmoke">
+                    </Entry>
+                    <Entry x:Name="EntryProductPrice"
+                           Placeholder="Price"
+                           TextColor="WhiteSmoke"
+                           PlaceholderColor="WhiteSmoke"
+                           Keyboard="Numeric"></Entry>
+                    <Entry x:Name="EntryProductStock"
+                           Placeholder="Stock Amount"
+                           TextColor="WhiteSmoke"
+                           PlaceholderColor="WhiteSmoke"
+                           Keyboard="Numeric"></Entry>
+                    <Button Text="Save"
+                            BackgroundColor="RoyalBlue"
+                            TextColor="WhiteSmoke"
+                            Clicked="AddProduct"
+                    ></Button>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+            <CollectionView x:Name="Products" Grid.Row="1">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="#252525">
+                            <Grid ColumnDefinitions="*,Auto,Auto,Auto,Auto,Auto" ColumnSpacing="10">
+                                <Label Text="{Binding Name}" TextColor="WhiteSmoke" Grid.Column="0" VerticalOptions="Center"></Label>
+                                <Label Text="{Binding Price, StringFormat='{0} TL'}" TextColor="WhiteSmoke" Grid.Column="1" VerticalOptions="Center"></Label>
+                                <Button Text="-"
+                                        Grid.Column="2"
+                                        BackgroundColor="DarkBlue"
+                                        TextColor="WhiteSmoke"
+                                        Padding="10"
+                                        Clicked="ChangeStock"
+                                        CommandParameter="{Binding .}"></Button>
+                                <Label Text="{Binding StockAmount}" TextColor="WhiteSmoke" Grid.Column="3" VerticalOptions="Center"></Label>
+                                <Button Text="+"
+                                        Grid.Column="4"
+                                        BackgroundColor="DarkBlue"
+                                        TextColor="WhiteSmoke"
+                                        Padding="10"
+                                        Clicked="ChangeStock"
+                                        CommandParameter="{Binding .}"></Button>
+                                <Button Text="X"
+                                        Grid.Column="5"
+                                        BackgroundColor="OrangeRed"
+                                        TextColor="WhiteSmoke"
+                                        Padding="20"
+                                        Clicked="DeleteProduct"
+                                        CommandParameter="{Binding .}"></Button>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
