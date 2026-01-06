@@ -16,6 +16,12 @@ public partial class CustomersPage : ContentPage
         InitializeComponent();
     }
 
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await LoadCustomers();
+    }
+
     public async void AddCustomer(object sender, EventArgs e)
     {
         var newCustomer = new Customer
@@ -30,5 +36,15 @@ public partial class CustomersPage : ContentPage
         EntryCustomerEmail.Text = "";
         EntryCustomerAddress.Text = "";
         EntryCustomerPhone.Text = "";
+    }
+
+    public async Task LoadCustomers()
+    {
+        var customers = await _dbService.GetCustomers();
+        Customers.ItemsSource = customers;
+    }
+    public async void DeleteCustomer(object sender, EventArgs e)
+    {
+        
     }
 }

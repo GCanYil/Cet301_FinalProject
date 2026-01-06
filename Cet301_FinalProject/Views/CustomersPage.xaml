@@ -5,39 +5,63 @@
              x:Class="Cet301_FinalProject.Views.CustomersPage"
              BackgroundColor="#1F1F1F">
     <ContentPage.Content>
-        <VerticalStackLayout Spacing="20" Padding="20">
-            <Label Text="Add new customer"
-                   TextColor="WhiteSmoke"
-                   FontSize="20"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center">
-                </Label>
-            <VerticalStackLayout BackgroundColor="#252525"
-                                 Spacing="20" Padding="20">
-                <Entry x:Name="EntryCustomerName"
-                       Placeholder="Customer Name"
+        <Grid RowDefinitions="Auto,*">
+            <VerticalStackLayout Spacing="20" Padding="20" Grid.Row="0">
+                <Label Text="Add new customer"
                        TextColor="WhiteSmoke"
-                       PlaceholderColor="WhiteSmoke">
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center">
+                    </Label>
+                <VerticalStackLayout BackgroundColor="#252525"
+                                     Spacing="20" Padding="20">
+                    <Entry x:Name="EntryCustomerName"
+                           Placeholder="Customer Name"
+                           TextColor="WhiteSmoke"
+                           PlaceholderColor="WhiteSmoke">
+                        </Entry>
+                    <Entry x:Name="EntryCustomerEmail"
+                           Placeholder="Email"
+                           TextColor="WhiteSmoke"
+                           PlaceholderColor="WhiteSmoke"></Entry>
+                    <Entry x:Name="EntryCustomerAddress"
+                           Placeholder="Address"
+                           TextColor="WhiteSmoke"
+                           PlaceholderColor="WhiteSmoke"></Entry>
+                    <Entry x:Name="EntryCustomerPhone"
+                           Placeholder="Phone"
+                           TextColor="WhiteSmoke"
+                           PlaceholderColor="WhiteSmoke">
                     </Entry>
-                <Entry x:Name="EntryCustomerEmail"
-                       Placeholder="Email"
-                       TextColor="WhiteSmoke"
-                       PlaceholderColor="WhiteSmoke"></Entry>
-                <Entry x:Name="EntryCustomerAddress"
-                       Placeholder="Address"
-                       TextColor="WhiteSmoke"
-                       PlaceholderColor="WhiteSmoke"></Entry>
-                <Entry x:Name="EntryCustomerPhone"
-                       Placeholder="Phone"
-                       TextColor="WhiteSmoke"
-                       PlaceholderColor="WhiteSmoke">
-                </Entry>
-                <Button Text="Save"
-                        BackgroundColor="RoyalBlue"
-                        TextColor="WhiteSmoke"
-                        Clicked="AddCustomer"
-                        ></Button>
+                    <Button Text="Save"
+                            BackgroundColor="RoyalBlue"
+                            TextColor="WhiteSmoke"
+                            Clicked="AddCustomer"
+                            ></Button>
+                </VerticalStackLayout>
             </VerticalStackLayout>
-        </VerticalStackLayout>
+            <CollectionView x:Name="Customers" Grid.Row="1">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="#252525">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <VerticalStackLayout Grid.Column="0">
+                                    <Label Text="{Binding Name}" TextColor="WhiteSmoke"></Label>
+                                    <Label Text="{Binding Email}" TextColor="WhiteSmoke"></Label>
+                                    <Label Text="{Binding Phone}" TextColor="WhiteSmoke"></Label>
+                                </VerticalStackLayout>
+                                <Button Text="X"
+                                        Grid.Column="1"
+                                        BackgroundColor="OrangeRed"
+                                        TextColor="WhiteSmoke"
+                                        Padding="20"
+                                        Clicked="DeleteCustomer"
+                                        CommandParameter="{Binding .}"></Button>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>    
     </ContentPage.Content>
 </ContentPage>
