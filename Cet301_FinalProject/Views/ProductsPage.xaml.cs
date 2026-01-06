@@ -57,9 +57,29 @@ public partial class ProductsPage : ContentPage
         var products = await _dbService.GetProducts();
         Products.ItemsSource = products;
     }
-    public void ChangeStock(object sender, EventArgs e)
+    public async void ChangeStock(object sender, EventArgs e)
     {
-        
+        var button = (Button)sender;
+        var product = (Product)button.CommandParameter;
+        switch (button.Text)
+        {
+            case "+":
+                product.StockAmount++;
+                break;
+            case "-":
+                if (product.StockAmount > 0)
+                {
+                    product.StockAmount--;
+                }
+                else
+                {
+                    return;
+                }
+                break;
+        }
+
+        await _dbService.UpdateProduct(product);
+        RefreshUI();
     }
     
     public async void DeleteProduct(object sender, EventArgs e)
