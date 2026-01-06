@@ -36,14 +36,48 @@ public partial class OrdersPage : ContentPage
         public decimal TPrice => Price * Amount;
         public Color RowColor { get; set; } = Color.FromArgb("#252525");
     }
-    public void AddToCart(object sender, EventArgs e)
+    public List<CartItem> _cartList = new List<CartItem>();
+    public async void AddToCart(object sender, EventArgs e)
     {
-        
+        if (PickerCustomer.SelectedItem == null || PickerProduct.SelectedItem == null || EntryAmount.Text == null)
+        {
+            await DisplayAlert("Error", "Please do not leave any empty space", "OK");
+            return;
+        }
+
+        var selectedProduct = (Product)PickerProduct.SelectedItem;
+        var newItem = new CartItem
+        {
+            PId = selectedProduct.Id,
+            PName = selectedProduct.Name,
+            Price = selectedProduct.Price,
+            Amount = int.Parse(EntryAmount.Text)
+        };
+        _cartList.Add(newItem);
+        PickerCustomer.IsEnabled = false;
+        RefreshCart();
+        EntryAmount.Text = "";
+        PickerProduct.SelectedItem = null;
+    }
+
+    public void RefreshCart()
+    {
+        Cart.ItemsSource = null;
+        Cart.ItemsSource = _cartList;
+        decimal total = 0;
+        foreach (var VARIABLE in _cartList)
+        {
+            total += VARIABLE.TPrice;
+        }
+        LabelTotal.Text = $"Total = {total:F2} TL";
     }
     
     public void DeleteFromCart(object sender, EventArgs e)
     {
-        
+        var button = (Button)sender;
+        var item = (CartItem)button.CommandParameter;
+        _cartList.Remove(item);
+        RefreshCart();
     }
     public void ConfirmOrder(object sender, EventArgs e)
     {
