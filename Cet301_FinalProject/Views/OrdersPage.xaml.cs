@@ -82,6 +82,10 @@ public partial class OrdersPage : ContentPage
         var item = (CartItem)button.CommandParameter;
         _cartList.Remove(item);
         RefreshCart();
+        if (_cartList.Count == 0)
+        {
+            PickerCustomer.IsEnabled = true;
+        }
     }
     public async void ConfirmOrder(object sender, EventArgs e)
     {
