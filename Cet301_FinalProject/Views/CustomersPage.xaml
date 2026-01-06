@@ -6,7 +6,8 @@
              BackgroundColor="#1F1F1F">
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
-            <VerticalStackLayout Spacing="20" Padding="20" Grid.Row="0">
+            <VerticalStackLayout x:Name="AddCustomerPanel"
+                Spacing="20" Padding="20" Grid.Row="0">
                 <Label Text="Add new customer"
                        TextColor="WhiteSmoke"
                        FontSize="20"

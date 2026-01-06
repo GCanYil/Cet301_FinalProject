@@ -19,9 +19,24 @@ public partial class CustomersPage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
+
+        if (App.IsAdmin)
+        {
+            AddCustomerPanel.IsVisible = true;
+        }
+        else
+        {
+            AddCustomerPanel.IsVisible = false;
+        }
+        
         await LoadCustomers();
     }
 
+    public async void RefreshUI()
+    {
+        await LoadCustomers();
+    }
+    
     public async void AddCustomer(object sender, EventArgs e)
     {
         var newCustomer = new Customer
@@ -36,6 +51,7 @@ public partial class CustomersPage : ContentPage
         EntryCustomerEmail.Text = "";
         EntryCustomerAddress.Text = "";
         EntryCustomerPhone.Text = "";
+        RefreshUI();
     }
 
     public async Task LoadCustomers()
@@ -45,6 +61,16 @@ public partial class CustomersPage : ContentPage
     }
     public async void DeleteCustomer(object sender, EventArgs e)
     {
-        
+        if (App.IsAdmin)
+        {
+            var button = (Button)sender;
+            var customer = (Customer)button.CommandParameter;
+            await _dbService.DeleteCustomer(customer);
+            RefreshUI();
+        }
+        else
+        {
+            await DisplayAlert("Error","Only admins can delete customers", "OK");
+        }
     }
 }
