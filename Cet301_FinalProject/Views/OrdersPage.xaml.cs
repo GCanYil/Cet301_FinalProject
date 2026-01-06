@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Android.Media;
+//Android.Media sayfa oluşturulurken kendiliğinden eklenmişti fakat bir önceki pushtan sonra çökmeye sebep oldu.
+//AI'a hatayı okutup (using Android.Media altı kırmızı çizili değildi) silerek düzelttim. Kodda bir değişiklik olmadı
 using Cet301_FinalProject.Models;
 using Cet301_FinalProject.Services;
 using Cet301_FinalProject.Views;

@@ -43,7 +43,7 @@
                             <Grid ColumnDefinitions="*,Auto,Auto,Auto" ColumnSpacing="5">
                                 <Label Text="{Binding PName}" TextColor="WhiteSmoke" Grid.Column="0"></Label>
                                 <Label Text="{Binding Amount}" TextColor="WhiteSmoke" Grid.Column="1"></Label>
-                                <Label Text="{Binding TPrice}" TextColor="WhiteSmoke" Grid.Column="2"></Label>
+                                <Label Text="{Binding TPrice, StringFormat='{0:F2} TL'}" TextColor="WhiteSmoke" Grid.Column="2"></Label>
                                 <Button Text="X" TextColor="WhiteSmoke"
                                         BackgroundColor="OrangeRed" Padding="20"
                                         Clicked="DeleteFromCart" CommandParameter="{Binding .}"
