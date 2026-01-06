@@ -2,8 +2,33 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Cet301_FinalProject.Views.LogsPage">
+             x:Class="Cet301_FinalProject.Views.LogsPage"
+             BackgroundColor="#1F1F1F">
     <ContentPage.Content>
-        
+        <Grid RowDefinitions="Auto,*">
+            <HorizontalStackLayout Grid.Row="0" Spacing="10">
+                <Button Text="Customers" TextColor="WhiteSmoke" BackgroundColor="DarkOrange"
+                        Clicked="FilterLog" CommandParameter="Customer"></Button>
+                <Button Text="Products" TextColor="WhiteSmoke" BackgroundColor="MediumPurple"
+                        Clicked="FilterLog" CommandParameter="Product"></Button>
+                <Button Text="Orders" TextColor="WhiteSmoke" BackgroundColor="#00FF7F"
+                        Clicked="FilterLog" CommandParameter="Order"></Button>
+            </HorizontalStackLayout>
+            <CollectionView x:Name="Logs" Grid.Row="1">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="#252525">
+                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="5">
+                                <Label Text="{Binding OperationType}" TextColor="WhiteSmoke"
+                                       FontAttributes="Bold" Grid.Column="0"></Label>
+                                <Label Text="{Binding Message}" TextColor="WhiteSmoke" Grid.Column="1"></Label>
+                                <Label Text="{Binding Date, StringFormat='{0:dd.MM.yyyy HH:mm}'}" TextColor="WhiteSmoke"
+                                       Grid.Column="2"></Label>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
