@@ -2,8 +2,63 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Cet301_FinalProject.Views.OrdersPage">
+             x:Class="Cet301_FinalProject.Views.OrdersPage"
+             BackgroundColor="#1F1F1F">
     <ContentPage.Content>
-        
+        <Grid RowDefinitions="Auto, *, Auto">
+            <VerticalStackLayout Grid.Row="0" Padding="20">
+                <Label Text="Create an Order"
+                       TextColor="WhiteSmoke"
+                       FontAttributes="Bold"
+                       FontSize="24"
+                       HorizontalOptions="Center"></Label>
+                <Picker x:Name="PickerCustomer"
+                        Title="Select Customer"
+                        TextColor="WhiteSmoke"
+                        TitleColor="WhiteSmoke"
+                        BackgroundColor="Gray"
+                        ItemDisplayBinding="{Binding Name}">
+                </Picker>
+                <Picker x:Name="PickerProduct"
+                        Title="Select Product"
+                        TextColor="WhiteSmoke"
+                        TitleColor="WhiteSmoke"
+                        BackgroundColor="Gray"
+                        ItemDisplayBinding="{Binding Name}"></Picker>
+                <Entry x:Name="EntryAmount"
+                       Placeholder="Enter amount"
+                       TextColor="WhiteSmoke"
+                       PlaceholderColor="WhiteSmoke"
+                       Keyboard="Numeric"
+                       BackgroundColor="Gray"></Entry>
+                <Button Text="Add to Cart"
+                        BackgroundColor="Purple"
+                        FontSize="18"
+                        Clicked="AddToCart"></Button>
+            </VerticalStackLayout>
+            <CollectionView x:Name="Cart" Grid.Row="1">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="{Binding RowColor}">
+                            <Grid ColumnDefinitions="*,Auto,Auto,Auto" ColumnSpacing="5">
+                                <Label Text="{Binding PName}" TextColor="WhiteSmoke" Grid.Column="0"></Label>
+                                <Label Text="{Binding Amount}" TextColor="WhiteSmoke" Grid.Column="1"></Label>
+                                <Label Text="{Binding TPrice}" TextColor="WhiteSmoke" Grid.Column="2"></Label>
+                                <Button Text="X" TextColor="WhiteSmoke"
+                                        BackgroundColor="OrangeRed" Padding="20"
+                                        Clicked="DeleteFromCart" CommandParameter="{Binding .}"
+                                        Grid.Column="3"></Button>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <HorizontalStackLayout Grid.Row="2">
+                <Label x:Name="LabelTotal" Text="Total = 0 TL" TextColor="WhiteSmoke"
+                       FontSize="24" FontAttributes="Bold"></Label>
+                <Button TextColor="WhiteSmoke" Text="Complete Order" BackgroundColor="ForestGreen"
+                        Clicked="ConfirmOrder"></Button>
+            </HorizontalStackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -12,4 +12,27 @@ public partial class OrdersPage : ContentPage
     {
         InitializeComponent();
     }
+
+    public class CartItem
+    {
+        public int PId { get; set; }
+        public string PName { get; set; }
+        public decimal Price { get; set; }
+        public int Amount { get; set; }
+        public decimal TPrice => Price * Amount;
+        public Color RowColor { get; set; } = Color.FromArgb("#252525");
+    }
+    public void AddToCart(object sender, EventArgs e)
+    {
+        
+    }
+    
+    public void DeleteFromCart(object sender, EventArgs e)
+    {
+        
+    }
+    public void ConfirmOrder(object sender, EventArgs e)
+    {
+        
+    }
 }
